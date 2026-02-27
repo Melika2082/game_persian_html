@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<title>🚀 سامانه هوشمند آموزش فارسی ششم</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+  }
+
+  body {
+    background: radial-gradient(circle at 50% 30%, #001d3d, #000814);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  .main-card {
+    width: 100%;
+    max-width: 780px;
+    background: rgba(20, 30, 45, 0.75);
+    backdrop-filter: blur(20px);
+    border-radius: 60px;
+    border: 4px solid #ffbd33;
+    padding: 20px;
+  }
+  
+  .badge-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffb700;
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 5px 0 #9b6500;
+}
+
+    .music-icon-btn {
+    background: #001d3d;
+    border: 3px solid #ffbd33;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #ffbd33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.1s;
+    box-shadow: 0 4px 0 #000814;
+    }
+
+    .music-icon-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #000814;
+    }
+
+  header {
+    background: linear-gradient(135deg, #002b4a, #001d3d);
+    border-radius: 50px 50px 20px 20px;
+    padding: 18px;
+    border: 3px solid #ffb700;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  header h2 {
+    font-size: 2.2rem;
+    text-shadow: 3px 3px 0 #000814;
+  }
+
+  .badge {
+    background: #ffb700;
+    color: #001d3d;
+    padding: 8px 22px;
+    border-radius: 50px;
+    font-weight: 900;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 5px 0 #9b6500;
+  }
+
+  .intro-panel {
+    background: linear-gradient(145deg, #002b4a, #001a33);
+    border-radius: 50px;
+    padding: 30px;
+    border: 5px solid #ffb700;
+    color: white;
+    text-align: center;
+  }
+
+  .intro-title {
+    font-size: 2rem;
+    color: #ffbd33;
+    margin-bottom: 20px;
+  }
+
+  .intro-text {
+    font-size: 1.2rem;
+    line-height: 2;
+    text-align: right;
+    margin-bottom: 25px;
+  }
+
+  .intro-btn, .dialog-btn, .action-btn, .restart-btn {
+    background: #ffb700;
+    border: none;
+    border-radius: 80px;
+    padding: 12px 30px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    border-bottom: 5px solid #9b5e00;
+    cursor: pointer;
+    color: #001d3d;
+    margin: 10px;
+    transition: 0.1s;
+  }
+
+  .action-btn:active, .restart-btn:active, .intro-btn:active, .dialog-btn:active {
+    transform: translateY(4px);
+    border-bottom-width: 2px;
+  }
+
+  .rule-banner {
+    background: linear-gradient(90deg, #ffb700, #ff9500);
+    color: #001d3d;
+    padding: 14px;
+    border-radius: 60px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .rule-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.3);
+    padding: 5px 15px;
+    border-radius: 40px;
+  }
+
+  .custom-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+  }
+
+  .dialog-box {
+    background: linear-gradient(145deg, #003566, #001d3d);
+    border: 5px solid #ffb700;
+    border-radius: 70px;
+    padding: 35px;
+    max-width: 480px;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+
+  .dialog-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.3rem;
+    border-radius: 80px;
+    border: 4px solid #ffb700;
+    margin: 20px 0;
+    text-align: right;
+  }
+
+  .launch-pad {
+    background: rgba(0,5,15,0.98);
+    border-radius: 60px;
+    padding: 30px;
+    border: 4px solid #ffb703;
+    text-align: center;
+    min-height: 450px;
+  }
+
+  #countdown {
+    font-size: 8rem;
+    color: #ffd966;
+    text-shadow: 0 0 40px red;
+    margin-bottom: 30px;
+  }
+
+  .balloon-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    height: 250px;
+  }
+
+  .balloon-house {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    animation: float 3s infinite ease-in-out;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  @keyframes poof {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+    100% { transform: scale(0); opacity: 0; }
+  }
+
+  .balloon-poof {
+    animation: poof 0.5s ease-out forwards !important;
+  }
+
+  .balloon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 20px 15px rgba(255, 215, 0, 0.4));
+  }
+
+  .balloon-main {
+    position: absolute;
+    width: 90%;
+    height: 70%;
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #ff3838);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    top: 0;
+    left: 5%;
+    box-shadow: 0 10px 0 #c41e1e;
+    border: 4px solid #ffd966;
+  }
+
+  .balloon-shine {
+    position: absolute;
+    width: 25%;
+    height: 20%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+    border-radius: 50%;
+    top: 15%;
+    left: 20%;
+  }
+
+  .balloon-basket {
+    position: absolute;
+    width: 40%;
+    height: 15%;
+    background: linear-gradient(135deg, #8b4513, #5d3a1a);
+    bottom: -5%;
+    left: 30%;
+    border-radius: 10px 10px 20px 20px;
+    border: 3px solid #ffb700;
+    box-shadow: 0 8px 0 #3e280e;
+  }
+
+  .balloon-ropes {
+    position: absolute;
+    width: 4px;
+    height: 40px;
+    background: #ffd966;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: -15px 0 0 #ffd966, 15px 0 0 #ffd966;
+  }
+
+  .stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 1.5s infinite alternate;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.2; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.8); }
+  }
+
+  .game-panel {
+    background: rgba(0,20,40,0.85);
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+    padding: 20px;
+    border: 4px solid #ffc300;
+  }
+
+  .score-row {
+    display: flex;
+    justify-content: space-between;
+    background: #001d3d;
+    padding: 15px;
+    border-radius: 50px;
+    border: 3px solid #ffb703;
+    color: white;
+    font-size: 1.4rem;
+  }
+
+  .player-badge {
+    background: #ffb703;
+    color: black;
+    padding: 5px 15px;
+    border-radius: 40px;
+  }
+
+  .info-bar {
+    display: flex;
+    justify-content: space-between;
+    background: #003566;
+    border-radius: 50px;
+    padding: 12px 20px;
+    margin: 15px 0;
+    border: 2px solid gold;
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .question-counter {
+    background: #000814;
+    padding: 10px;
+    border-radius: 50px;
+    color: #ffd966;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+
+  .question-card {
+    background: linear-gradient(145deg, #fbefc7, #f6c445);
+    border: 6px solid #ff9500;
+    border-radius: 60px 60px 20px 20px;
+    padding: 30px 15px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #001d3d;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .answer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .answer-option {
+    background: linear-gradient(to bottom, #ffda73, #e09d00);
+    border: 4px solid #fff2b5;
+    border-radius: 70px;
+    padding: 18px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #021f3b;
+    box-shadow: 0 7px 0 #964b00;
+    cursor: pointer;
+    text-align: center;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.1s;
+  }
+
+  .answer-option:active {
+    transform: translateY(6px);
+    box-shadow: 0 1px 0 #964b00;
+  }
+  
+  .answer-option.correct-selected {
+    background: #2ecc71 !important;
+    border-color: #27ae60 !important;
+    color: white !important;
+    box-shadow: 0 6px 0 #1e8449 !important;
+  }
+  
+  .answer-option.wrong-selected {
+    background: #e74c3c !important;
+    border-color: #c0392b !important;
+    color: white !important;
+    box-shadow: 0 6px 0 #a93226 !important;
+  }
+  
+  .answer-option.correct-answer-highlight {
+    background: #2ecc71 !important;
+    border-color: #27ae60 !important;
+    color: white !important;
+    box-shadow: 0 6px 0 #1e8449 !important;
+  }
+  
+  .answer-option.disabled {
+    pointer-events: none;
+    opacity: 0.9;
+  }
+
+  #feedback {
+    font-size: 1.5rem;
+    background: #001d3d;
+    border-radius: 60px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid #ffaa00;
+    min-height: 80px;
+  }
+
+  .result-panel {
+    background: #000c1ab3;
+    backdrop-filter: blur(20px);
+    border-radius: 60px;
+    padding: 30px;
+    border: 6px solid #ffbb00;
+    color: white;
+    text-align: center;
+  }
+
+  .report-card {
+    background: #001d3d;
+    border: 4px solid #ffb700;
+    border-radius: 40px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: right;
+  }
+
+  .report-title {
+    font-size: 1.8rem;
+    color: #ffbd33;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .report-stats {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffbd33;
+  }
+
+  .question-review {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 20px;
+  }
+
+  .review-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    border-right: 5px solid;
+  }
+
+  .review-item.correct { border-right-color: #2ecc71; }
+  .review-item.wrong { border-right-color: #e74c3c; }
+
+  .hidden { display: none; }
+
+  .confetti-particle {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    animation: fall 2.2s linear forwards;
+    z-index: 9999;
+    border-radius: 50%;
+  }
+
+  @keyframes fall {
+    to { transform: translateY(120vh) rotate(900deg); }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+  }
+</style>
+</head>
+<body>
+<div class="main-card">
+
+<header>
+  <h2>🚀 سامانه هوشمند آموزش</h2>
+  <div id="date"></div>
+  <div class="badge">🎓 فارسی ششم | زینب طائی</div>
+  <button class="music-icon-btn" onclick="toggleBackgroundMusic()" id="musicToggleBtn">🔊</button>
+</header>
+
+<div id="introScreen">
+  <div class="intro-panel">
+    <div class="intro-title">📚 سامانه هوشمند آموزش و ارزیابی فارسی ششم ابتدایی</div>
+    <div class="intro-text">
+      <p>با سلام</p>
+      <p>این سامانه با بهره‌گیری از هوش مصنوعی، به منظور ارتقای کیفیت آموزش و بهبود ارزیابی درس فارسی پایه ششم طراحی شده است.</p>
+      <p style="margin-top:20px; font-weight:bold;">طراحی و توسعه: زینب طائی</p>
+    </div>
+    <button class="intro-btn" onclick="startIntro()">🚀 شروع بازی</button>
+  </div>
+</div>
+
+<div id="ruleBanner" class="rule-banner hidden">
+  <div class="rule-item"><span>✅</span> صحیح: ۱۰+</div>
+  <div class="rule-item"><span>❌</span> غلط: ۵-</div>
+  <div class="rule-item"><span>⏰</span> زمان: ۵-</div>
+</div>
+
+<div id="modeSelection" class="hidden">
+  <div style="background:rgba(0,20,40,0.9); border-radius:60px; padding:30px; border:4px solid #ffaa22;">
+    <div style="font-size:2rem; color:#ffdb8e; margin-bottom:25px;">🎮 انتخاب حالت بازی</div>
+    <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+      <button onclick="showNameDialog('single')" style="background:#ffe187; border:4px solid #fffeb0; border-radius:60px; padding:15px 30px; font-size:1.5rem; font-weight:900; border-bottom:8px solid #9b5e00; cursor:pointer;">🧑‍🚀 یک نفره</button>
+      <button onclick="showNameDialog('double')" style="background:#ffe187; border:4px solid #fffeb0; border-radius:60px; padding:15px 30px; font-size:1.5rem; font-weight:900; border-bottom:8px solid #9b5e00; cursor:pointer;">👥 دو نفره</button>
+    </div>
+  </div>
+</div>
+
+<div id="launchScreen" class="launch-pad hidden">
+  <div id="countdown">۳</div>
+  <div class="balloon-container">
+    <div class="balloon-house" id="balloon">
+      <div class="balloon">
+        <div class="balloon-main"><div class="balloon-shine"></div></div>
+        <div class="balloon-ropes"></div>
+        <div class="balloon-basket"></div>
+      </div>
+    </div>
+    <div class="stars" id="stars"></div>
+  </div>
+  <button class="intro-btn" onclick="popBalloon()" style="margin-top:20px;">🎈 کلیک کن</button>
+</div>
+
+<div id="gameArea" class="hidden">
+  <div class="game-panel">
+    <div class="score-row">
+      <span id="player1Tag" class="player-badge">بازیکن 1</span>
+      <span>⭐ <span id="score1">0</span> : <span id="score2">0</span> ⭐</span>
+      <span id="player2Tag" class="player-badge">بازیکن 2</span>
+    </div>
+    <div class="info-bar">
+      <span id="turnDisplay">نوبت:</span>
+      <span id="timer">۲۰</span>
+    </div>
+    <div class="question-counter" id="questionCounter">سوال ۱ از ۲۰</div>
+    <div id="questionBox" class="question-card">...</div>
+    <div id="answers" class="answer-grid"></div>
+    <div id="feedback">✨ آماده‌ای؟ ✨</div>
+  </div>
+</div>
+
+<div id="resultScreen" class="hidden">
+  <div class="result-panel">
+    <div id="winnerText" style="font-size:2.5rem;"></div>
+    <div id="finalScoreText" style="font-size:2rem; margin:15px;"></div>
+    <div class="score-summary" id="totalScoreSummary"></div>
+    <div class="report-card" id="reportCard"></div>
+    <div class="button-container">
+      <button class="action-btn" onclick="downloadPDF()">📥 دریافت کارنامه PDF</button>
+      <button class="restart-btn" onclick="restartGame()">🔄 بازی جدید</button>
+    </div>
+  </div>
+</div>
+
+<div id="nameDialog" class="custom-dialog hidden">
+  <div class="dialog-box">
+    <h3 id="dialogTitle">🧑‍🚀 نام بازیکن</h3>
+    <input type="text" id="playerNameInput" class="dialog-input" placeholder="نام خود را وارد کنید...">
+    <button class="dialog-btn" onclick="submitName()">✅ تأیید</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  document.getElementById("date").innerText = "📅 " + new Date().toLocaleDateString('fa-IR');
+
+  // ==================== بانک سوالات با جواب‌های درست ====================
+  const baseQuestions = [
+    { q: "معنی کلمه «فرهیخته» چیست؟", a: ["دانشمند و باسواد", "نادان و جاهل", "تازه‌کار و مبتدی", "کم‌تجربه و خام"], c: 0, exp: "فرهیخته یعنی کسی که علم و دانش آموخته است." },
+    { q: "مترادف «آگاه» کدام است؟", a: ["مطلع و باخبر", "بی‌خبر و غافل", "ناآشنا و بیگانه", "خواب‌آلود و کسل"], c: 0, exp: "آگاه یعنی کسی که از چیزی باخبر است." },
+    { q: "متضاد «آشکار» کدام است؟", a: ["پنهان و مخفی", "روشن و تابان", "درخشان و فروزان", "عیان و هویدا"], c: 0, exp: "آشکار یعنی پیدا و نمایان، پس متضاد آن پنهان است." },
+    { q: "معنی «بامداد» چیست؟", a: ["صبحگاه و سپیده‌دم", "نیمه‌شب و شبانگاه", "غروب آفتاب", "ظهر گرم"], c: 0, exp: "بامداد به اول صبح گفته می‌شود." },
+    { q: "کلمه «شکیبا» به چه معناست؟", a: ["صبور و بردبار", "عجول و بی‌تاب", "خشمگین و عصبی", "بی‌حوصله و ملول"], c: 0, exp: "شکیبا یعنی کسی که تحمل دارد." },
+    { q: "معنی «خرامان» کدام است؟", a: ["با ناز و کرشمه راه رفتن", "سریع دویدن", "مخفیانه رفتن", "پریدن و جهیدن"], c: 0, exp: "خرامان به راه رفتن باوقار گفته می‌شود." },
+    { q: "«خرد» به چه معناست؟", a: ["عقل و دانایی", "تن و کالبد", "زمین و خاک", "آب و رطوبت"], c: 0, exp: "خرد به معنای عقل و دانش است." },
+    { q: "معنی «فراز» کدام است؟", a: ["بالا و بلندی", "پایین و نشیب", "کنار و پهلو", "داخل و میان"], c: 0, exp: "فراز به معنای بالا و بلندی است." },
+    { q: "«نشیب» یعنی چه؟", a: ["سرازیری و پایین", "قله و اوج", "دشت هموار", "کوه بلند"], c: 0, exp: "نشیب به زمین شیب‌دار گفته می‌شود." },
+    { q: "معنی «ژیان» چیست؟", a: ["شیر درنده", "آهوی زیبا", "گوسفند اهلی", "گربه وحشی"], c: 0, exp: "ژیان صفت شیر درنده است." },
+    { q: "مترادف «سپید» چیست؟", a: ["سفید و روشن", "سیاه و تاریک", "خاکستری", "کبود و آبی"], c: 0, exp: "سپید همان سفید است." },
+    { q: "متضاد «گرم» کدام است؟", a: ["سرد و خنک", "داغ و سوزان", "معتدل و ملایم", "گرمای شدید"], c: 0, exp: "گرم ضد سرد است." },
+    { q: "معنی «رهسپار» چیست؟", a: ["مسافر و راهی", "خانه‌نشین", "مقیم دائم", "ساکن"], c: 0, exp: "رهسپار به کسی گفته می‌شود که به سفر می‌رود." },
+    { q: "«پویا» یعنی چه؟", a: ["فعال و جستجوگر", "ساکن و بی‌حرکت", "ایستا و راکد", "خاموش و ساکت"], c: 0, exp: "پویا به معنای فعال و کوشا است." },
+    { q: "معنی «خزیده» چیست؟", a: ["آهسته و پنهانی رفتن", "تند دویدن", "پریدن", "غلتیدن"], c: 0, exp: "خزیده یعنی آهسته حرکت کردن." },
+    { q: "جمع «کتاب» کدام است؟", a: ["کُتُب", "کتابخانه", "کتابدار", "کتابفروش"], c: 0, exp: "جمع مکسر کتاب «کُتُب» است." },
+    { q: "جمع «دانش‌آموز» کدام است؟", a: ["دانش‌آموزان", "دانشگاه", "دانشکده", "دانشسرا"], c: 0, exp: "جمع دانش‌آموز با «ان» ساخته می‌شود." },
+    { q: "جمع مکسر «معلم» چیست؟", a: ["معلمان", "دبیر", "استاد", "آموزگار"], c: 0, exp: "جمع مکسر معلم «معلمان» است." },
+    { q: "جمع مکسر «بیت» کدام است؟", a: ["ابیات", "شعر", "غزل", "قصیده"], c: 0, exp: "جمع مکسر بیت «ابیات» است." },
+    { q: "جمع «ورزشکار» کدام است؟", a: ["ورزشکاران", "ورزشگاه", "ورزشی", "ورزشگار"], c: 0, exp: "جمع ورزشکار با «ان» ساخته می‌شود." }
+  ];
+
+  // ساخت بانک سوال
+  let questionBank = [];
+  for (let i = 0; i < baseQuestions.length; i++) {
+    const base = baseQuestions[i];
+    questionBank.push({
+      id: i + 1,
+      q: base.q,
+      a: [...base.a],
+      c: base.c,
+      exp: base.exp
+    });
+  }
+
+  let gameMode = null;
+  let p1 = "", p2 = "";
+  let score1 = 0, score2 = 0;
+  let currentQuestions = [];
+  let currentIndex = 0;
+  let timerInterval = null;
+  let timeLeft = 20;
+  let turn = 1;
+  let answerLock = false;
+  let nameStep = 1;
+  let countdownInterval = null;
+  let playerResults = [];
+  //متغیرهای جدید برای صدای هشدار تایمر
+  let warningSoundInterval = null;
+  let audioContext = null;
+
+  const MAX_POSSIBLE_SCORE = 200;
+
+  const introScreen = document.getElementById('introScreen');
+  const ruleBanner = document.getElementById('ruleBanner');
+  const modeDiv = document.getElementById('modeSelection');
+  const launchScreen = document.getElementById('launchScreen');
+  const gameArea = document.getElementById('gameArea');
+  const resultScreen = document.getElementById('resultScreen');
+  const nameDialog = document.getElementById('nameDialog');
+  const dialogTitle = document.getElementById('dialogTitle');
+  const playerNameInput = document.getElementById('playerNameInput');
+  const balloon = document.getElementById('balloon');
+  const reportCard = document.getElementById('reportCard');
+  
+  const player1Tag = document.getElementById('player1Tag');
+  const player2Tag = document.getElementById('player2Tag');
+  const score1Span = document.getElementById('score1');
+  const score2Span = document.getElementById('score2');
+  const turnDisplay = document.getElementById('turnDisplay');
+  const timerSpan = document.getElementById('timer');
+  const questionBox = document.getElementById('questionBox');
+  const answersDiv = document.getElementById('answers');
+  const feedbackDiv = document.getElementById('feedback');
+  const questionCounter = document.getElementById('questionCounter');
+  const winnerText = document.getElementById('winnerText');
+  const finalScoreText = document.getElementById('finalScoreText');
+  const totalScoreSummary = document.getElementById('totalScoreSummary');
+  const medalIcon = document.getElementById('medalIcon');
+  
+  // ==================== تنظیمات موزیک زمینه ====================
+let backgroundMusic = null;
+let isMusicPlaying = false;
+const musicToggleBtn = document.getElementById('musicToggleBtn');
+
+// راه‌اندازی موزیک زمینه
+function initBackgroundMusic() { 
+  if (!backgroundMusic) {
+    backgroundMusic = new Audio('https://dl.sedatoseda.com/sound/prince-of-persia%20(4).mp3?src=sedatoseda');
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.4;
+    backgroundMusic.preload = 'auto'; // این خط رو اضافه کن - فایل رو از قبل آماده نگه می‌داره
+    
+    backgroundMusic.preservesPitch = true;
+    backgroundMusic.mozPreservesPitch = true;
+    backgroundMusic.webkitPreservesPitch = true;
+  }
+}
+
+// تابع پخش/قطع موزیک
+window.toggleBackgroundMusic = function() {
+  initBackgroundMusic();
+  
+  if (isMusicPlaying) {
+    backgroundMusic.pause();
+    musicToggleBtn.innerHTML = '🔊';  // آیکون قطع
+    isMusicPlaying = false;
+  } else {
+    backgroundMusic.play().then(() => {
+      musicToggleBtn.innerHTML = '🔇';  // آیکون پخش
+      isMusicPlaying = true;
+    }).catch(error => {
+      console.log('پخش موزیک امکان‌پذیر نیست:', error);
+      alert('برای پخش موزیک، لطفاً ابتدا روی صفحه کلیک کنید.');
+    });
+  }
+};
+
+// پخش خودکار با اولین کلیک کاربر
+document.addEventListener('click', function initMusicOnFirstClick() {
+  if (!backgroundMusic && !isMusicPlaying) {
+    initBackgroundMusic();
+    backgroundMusic.play().then(() => {
+      musicToggleBtn.innerHTML = '🔇';
+      isMusicPlaying = true;
+    }).catch(() => {});
+  }
+  document.removeEventListener('click', initMusicOnFirstClick);
+}, { once: true });
+  
+  // ================ تابع پخش صدای هشدار ================
+  function playWarningSound() {
+    try {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+      
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(880, audioContext.currentTime); // نت لا (A5)
+      
+      gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + 0.2);
+    } catch (e) {
+      console.log('Audio not supported', e);
+    }
+  }
+
+  // ================ تابع قطع صدای هشدار ================
+  function stopWarningSound() {
+    if (warningSoundInterval) {
+      clearInterval(warningSoundInterval);
+      warningSoundInterval = null; 
+    }
+  }
+  
+  // ================ تابع پخش صدای ترکیدن بادکنک ================
+  function playPopSound() {
+  try {
+    // --- کد اصلی Web Audio API ---
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    if (audioContext.state === 'suspended') { 
+      audioContext.resume(); 
+    }
+
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(180, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.15);
+
+    // --- اضافه کردن صدای MP3 ---
+    const audio = new Audio('https://sedatoseda.com/wp-content/uploads/321.mp3');
+    audio.play().catch(error => {
+      console.warn('Audio play was blocked. User interaction may be required.', error);
+    });
+
+  } catch (e) {
+    console.log('Audio not supported', e);
+  }
+}
+
+  window.startIntro = function() {
+    introScreen.classList.add('hidden');
+    ruleBanner.classList.remove('hidden');
+    modeDiv.classList.remove('hidden');
+    initMusicOnFirstClick();
+  };
+
+  window.showNameDialog = function(mode) {
+    gameMode = mode;
+    nameStep = 1;
+    dialogTitle.innerText = mode === 'single' ? '🧑‍🚀 نام بازیکن را وارد کنید' : '👤 نام بازیکن اول را وارد کنید';
+    playerNameInput.value = '';
+    nameDialog.classList.remove('hidden');
+    playerNameInput.focus();
+  };
+
+  window.submitName = function() {
+    const name = playerNameInput.value.trim();
+    if (name === '') { alert('لطفاً نام را وارد کنید'); return; }
+    
+    if (gameMode === 'single') {
+      p1 = name; p2 = "";
+      nameDialog.classList.add('hidden');
+      modeDiv.classList.add('hidden');
+      launchScreen.classList.remove('hidden');
+      createStars();
+    } else {
+      if (nameStep === 1) {
+        p1 = name;
+        nameStep = 2;
+        dialogTitle.innerText = '👤 نام بازیکن دوم را وارد کنید';
+        playerNameInput.value = '';
+        playerNameInput.focus();
+      } else {
+        p2 = name;
+        nameDialog.classList.add('hidden');
+        modeDiv.classList.add('hidden');
+        launchScreen.classList.remove('hidden');
+        createStars();
+      }
+    }
+  };
+
+  function createStars() {
+    const starsContainer = document.getElementById('stars');
+    starsContainer.innerHTML = '';
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.width = (Math.random() * 5 + 1) + 'px';
+      star.style.height = star.style.width;
+      star.style.animationDelay = Math.random() * 2 + 's';
+      starsContainer.appendChild(star);
+    }
+  }
+
+  window.popBalloon = function() {
+    playPopSound(); // پخش صدای ترکیدن بادکنک
+    if (balloon) {
+      balloon.classList.add('balloon-poof');
+      setTimeout(() => startCountdown(), 500);
+    }
+  };
+
+  window.startCountdown = function() {
+    let count = 3;
+    document.getElementById("countdown").innerText = '۳';
+    countdownInterval = setInterval(() => {
+      count--;
+      if (count > 0) {
+        const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        document.getElementById("countdown").innerText = persianNumbers[count];
+      } else {
+        document.getElementById("countdown").innerText = '🎈';
+        clearInterval(countdownInterval);
+        setTimeout(() => {
+          launchScreen.classList.add('hidden');
+          startNewGame();
+        }, 1000);
+      }
+    }, 1000);
+  };
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  function startNewGame() {
+    player1Tag.innerText = p1;
+    player2Tag.innerText = (gameMode === 'single') ? '—' : p2;
+
+    score1 = 0; score2 = 0; currentIndex = 0; turn = 1;
+    answerLock = false; playerResults = [];
+    updateScores();
+
+    let shuffled = [...questionBank];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    
+    let selected = [], seenIds = new Set();
+    for (let q of shuffled) {
+      if (!seenIds.has(q.id)) {
+        seenIds.add(q.id);
+        selected.push(q);
+        if (selected.length >= 20) break;
+      }
+    }
+    currentQuestions = selected;
+
+    gameArea.classList.remove('hidden');
+    resultScreen.classList.add('hidden');
+    nextQuestion();
+  }
+
+  function nextQuestion() {
+    // قطع صدای هشدار قبلی
+    stopWarningSound();
+    
+    if (currentIndex >= currentQuestions.length) { finishGame(); return; }
+    clearTimer();
+    timeLeft = 20;
+    timerSpan.innerText = timeLeft;
+    answerLock = false;
+
+    questionCounter.innerText = `سوال ${currentIndex+1} از ${currentQuestions.length}`;
+
+    const originalQ = currentQuestions[currentIndex];
+    
+    // فقط جای گزینه‌ها رو عوض می‌کنیم، جواب درست رو عوض نمی‌کنیم
+    let options = [...originalQ.a];
+    let correctAnswer = options[originalQ.c];
+    options = shuffleArray(options);
+    let newCorrectIndex = options.indexOf(correctAnswer);
+    
+    const q = {
+      q: originalQ.q,
+      a: options,
+      c: newCorrectIndex,
+      exp: originalQ.exp
+    };
+    
+    questionBox.innerText = q.q;
+
+    let btns = '';
+    q.a.forEach((opt, idx) => {
+      btns += `<div class="answer-option" data-index="${idx}" onclick="handleAnswer(this, ${idx}, ${q.c})">${opt}</div>`;
+    });
+    answersDiv.innerHTML = btns;
+
+    turnDisplay.innerText = (gameMode === 'single') ? `🧑‍🚀 نوبت: ${p1}` : `🎤 نوبت: ${turn === 1 ? p1 : p2}`;
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      timerSpan.innerText = timeLeft;
+      
+      // وقتی به ۵ ثانیه رسید، صدای هشدار شروع شود
+      if (timeLeft === 5) {
+        // هر ۱ ثانیه یک بار صدای هشدار پخش شود
+        playWarningSound(); // یک بار فوری پخش شود
+        warningSoundInterval = setInterval(() => {
+          playWarningSound();
+        }, 1000);
+      }
+      
+      if (timeLeft <= 0) { 
+        clearTimer(); 
+        stopWarningSound(); // قطع صدای هشدار
+        timeoutAction(q); 
+      }
+    }, 1000);
+  }
+
+  window.handleAnswer = function(element, selected, correctIndex) {
+    if (answerLock) return;
+    clearTimer();
+    stopWarningSound(); // قطع صدای هشدار
+    answerLock = true;
+    
+    const q = currentQuestions[currentIndex];
+    const correct = correctIndex;
+    const player = (gameMode === 'single' || turn === 1) ? p1 : p2;
+    const correctText = q.a[correct];
+    const explanation = q.exp;
+    
+    const allOptions = document.querySelectorAll('.answer-option');
+    allOptions.forEach(opt => opt.classList.add('disabled'));
+    
+    let isCorrect = (selected === correct);
+    
+    if (isCorrect) {
+      element.classList.add('correct-selected');
+      if (gameMode === 'single' || turn === 1) score1 += 10; else score2 += 10;
+      feedbackDiv.innerHTML = `✅ آفرین ${player}! پاسخ درست. <br> <span style="font-size:0.9rem;">${explanation}</span>`;
+    } else {
+      element.classList.add('wrong-selected');
+      allOptions.forEach(opt => { if (parseInt(opt.dataset.index) === correct) opt.classList.add('correct-answer-highlight'); });
+      if (gameMode === 'single' || turn === 1) score1 = Math.max(0, score1 - 5); else score2 = Math.max(0, score2 - 5);
+      feedbackDiv.innerHTML = `❌ ${player} جان، پاسخ صحیح: «${correctText}» <br> <span style="font-size:0.9rem;">${explanation}</span>`;
+    }
+    
+    playerResults.push({ question: q.q, userAnswer: q.a[selected], correctAnswer: correctText, isCorrect, explanation });
+    updateScores();
+    
+    setTimeout(() => {
+      currentIndex++;
+      if (gameMode === 'double') turn = (turn === 1) ? 2 : 1;
+      nextQuestion();
+    }, 2000);
+  };
+
+  function timeoutAction(q) {
+    if (answerLock) return;
+    answerLock = true;
+    
+    const correct = q.c;
+    const player = (gameMode === 'single' || turn === 1) ? p1 : p2;
+    const correctText = q.a[correct];
+    const explanation = q.exp;
+    
+    const allOptions = document.querySelectorAll('.answer-option');
+    allOptions.forEach(opt => opt.classList.add('disabled'));
+    allOptions.forEach(opt => { if (parseInt(opt.dataset.index) === correct) opt.classList.add('correct-answer-highlight'); });
+    
+    if (gameMode === 'single' || turn === 1) score1 = Math.max(0, score1 - 5); else score2 = Math.max(0, score2 - 5);
+    feedbackDiv.innerHTML = `⏰ زمان رفت! ${player} ۵ امتیاز -. <br> پاسخ صحیح: «${correctText}» <br> <span style="font-size:0.9rem;">${explanation}</span>`;
+    
+    playerResults.push({ question: q.q, userAnswer: "زمان تمام شد", correctAnswer: correctText, isCorrect: false, explanation });
+    updateScores();
+    
+    setTimeout(() => {
+      currentIndex++;
+      if (gameMode === 'double') turn = (turn === 1) ? 2 : 1;
+      nextQuestion();
+    }, 2000);
+  }
+
+  function clearTimer() { if (timerInterval) clearInterval(timerInterval); timerInterval = null; }
+  function updateScores() { score1Span.innerText = score1; score2Span.innerText = (gameMode === 'single') ? '—' : score2; }
+
+  function finishGame() {
+    stopWarningSound(); // قطع صدای هشدار در پایان بازی
+    gameArea.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
+
+    let winMsg = gameMode === 'single' ? `🏆 امتیاز شما: ${score1}` : (score1 > score2 ? `🏆 قهرمان: ${p1}` : (score2 > score1 ? `🏆 قهرمان: ${p2}` : "🤝 مساوی"));
+    winnerText.innerHTML = `<h2>${winMsg}</h2>`;
+    
+    if (gameMode === 'single') {
+      finalScoreText.innerHTML = `⭐ امتیاز نهایی: ${score1} ⭐`;
+      totalScoreSummary.innerHTML = `📊 شما از ${MAX_POSSIBLE_SCORE} امتیاز، ${score1} امتیاز (${Math.round(score1/MAX_POSSIBLE_SCORE*100)}%) را کسب کردید.`;
+    } else {
+      finalScoreText.innerHTML = `⭐ ${p1} ${score1}  -  ${p2} ${score2} ⭐`;
+      totalScoreSummary.innerHTML = `📊 مجموع امتیازات: ${score1+score2} از ۴۰۰ امتیاز ممکن`;
+    }
+
+    const correctCount = playerResults.filter(r => r.isCorrect).length;
+    const wrongCount = playerResults.filter(r => !r.isCorrect).length;
+    
+    let reportHTML = `<div class="report-title">📋 کارنامه ${p1}</div>
+      <div class="report-stats">
+        <div class="stat-item"><div>✅ پاسخ درست</div><div class="stat-value">${correctCount}</div></div>
+        <div class="stat-item"><div>❌ پاسخ غلط</div><div class="stat-value">${wrongCount}</div></div>
+        <div class="stat-item"><div>📊 درصد موفقیت</div><div class="stat-value">${Math.round((correctCount/20)*100)}%</div></div>
+      </div>
+      <div class="question-review">`;
+    
+    playerResults.forEach((r, i) => {
+      reportHTML += `<div class="review-item ${r.isCorrect ? 'correct' : 'wrong'}">
+        <div><strong>سوال ${i+1}:</strong> ${r.question}</div>
+        <div>🔹 پاسخ شما: ${r.userAnswer}</div>
+        <div>🔸 پاسخ صحیح: ${r.correctAnswer}</div>
+        <div style="color:#ffd966; margin-top:5px;">💡 ${r.explanation}</div>
+      </div>`;
+    });
+    reportHTML += `</div>`;
+    reportCard.innerHTML = reportHTML;
+
+    medalIcon.innerText = score1 >= 150 ? "🏅 پلاتین" : score1 >= 100 ? "🥇 طلا" : score1 >= 50 ? "🥈 نقره" : "🥉";
+
+    for (let i=0;i<50;i++) {
+      let c = document.createElement('div');
+      c.className = 'confetti-particle';
+      c.style.left = Math.random()*100 + '%';
+      c.style.background = `hsl(${Math.random()*360}, 80%, 60%)`;
+      c.style.animationDuration = (1+Math.random()*2)+'s';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(), 2000);
+    }
+  }
+
+  window.downloadPDF = function() {
+    try {
+      // ایجاد محتوای HTML برای PDF
+      const reportContent = reportCard.innerHTML;
+      
+      // ایجاد پنجره جدید برای چاپ/PDF
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html dir="rtl">
+        <head>
+          <meta charset="UTF-8">
+          <title>کارنامه ${p1}</title>
+          <style>
+            * {
+              font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            }
+            body {
+              padding: 30px;
+              background: #f0f0f0;
+            }
+            .report-card {
+              background: white;
+              border: 4px solid #ffb700;
+              border-radius: 40px;
+              padding: 30px;
+              max-width: 700px;
+              margin: 0 auto;
+              box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            }
+            .report-title {
+              font-size: 28px;
+              color: #001d3d;
+              text-align: center;
+              margin-bottom: 25px;
+              font-weight: 900;
+            }
+            .report-stats {
+              display: flex;
+              justify-content: space-around;
+              background: #f5f5f5;
+              padding: 20px;
+              border-radius: 30px;
+              margin-bottom: 25px;
+            }
+            .stat-item {
+              text-align: center;
+            }
+            .stat-value {
+              font-size: 32px;
+              font-weight: bold;
+              color: #ffb700;
+            }
+            .question-review {
+              margin-top: 20px;
+            }
+            .review-item {
+              padding: 15px;
+              margin: 10px 0;
+              border-radius: 15px;
+              background: #f9f9f9;
+              border-right: 8px solid;
+            }
+            .correct { border-right-color: #2ecc71; }
+            .wrong { border-right-color: #e74c3c; }
+            .review-item strong {
+              color: #001d3d;
+              font-size: 1.1rem;
+            }
+            .footer {
+              text-align: center;
+              margin-top: 30px;
+              color: #666;
+              font-size: 0.9rem;
+            }
+          </style>
+        </head>
+        <body>
+          ${reportCard.outerHTML}
+          <div class="footer">
+            <p>تاریخ: ${new Date().toLocaleDateString('fa-IR')}</p>
+          </div>
+        </body>
+        </html>
+      `);
+      
+      printWindow.document.close();
+      
+      // کمی صبر می‌کنیم تا محتوا لود شود سپس چاپ می‌کنیم
+      setTimeout(() => {
+        printWindow.focus();
+        printWindow.print();
+      }, 500);
+      
+    } catch(e) {
+      console.error('خطا:', e);
+      alert('خطا در ایجاد PDF. لطفاً از دکمه چاپ مرورگر استفاده کنید.');
+    }
+  };
+
+  window.restartGame = function() {
+    stopWarningSound(); // قطع صدای هشدار
+    resultScreen.classList.add('hidden');
+    introScreen.classList.remove('hidden');
+    ruleBanner.classList.add('hidden');
+    modeDiv.classList.add('hidden');
+    launchScreen.classList.add('hidden');
+    gameArea.classList.add('hidden');
+    nameDialog.classList.add('hidden');
+    document.getElementById("countdown").innerText = "۳";
+    
+    if (balloon) {
+      balloon.classList.remove('balloon-poof');
+    }
+    
+    if (countdownInterval) {
+      clearInterval(countdownInterval);
+    }
+    
+    clearTimer();
+    score1=0; score2=0; currentIndex=0; turn=1; answerLock=false; gameMode=null; p1=""; p2=""; playerResults=[];
+  };
+})();
+</script>
+</div>
+</body>
+</html>
+   
